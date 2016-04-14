@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="lazyLoadApp">
+	<head>
+		<title>Lazy API Load App</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/main.css">
+		
+	</head >
+	<body scroll ng-view ng-controller="lazyLoadAppController">
+
+		<header>
+			<div class="container">
+				<h1>Lazy API load</h1>
+				<div class="counter">{{ counter }} movies loaded</div>
+			</div>
+		</header>
+
+		<div class="container wrapper" >
+			<div class="row">
+				<section ng-repeat="result in results" class="col-md-12">
+					<h3>{{ result.Title }}</h3>
+					<p>{{ result.Year }}</p>
+					<img src="{{ result.Poster }}" class="poster" />
+				</section>
+				<div ng-class="{'filler': filler}"></div>
+			</div>
+			
+		</div>
+
+		<div class="footer-button">
+			<button scroll-bottom class="btn btn-default">Load more</button>
+		</div>
+
+		<div class="loader" ng-class="{'hidden': hideLoader}"></div>
+
+		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+		
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/services.js"></script>
+		<script src="js/directives.js"></script>
+
+	
+	</body>
+</html>
